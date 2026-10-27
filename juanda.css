@@ -1,5 +1,5 @@
 /* ==========================================================
-   REGULA UNIVERSAL Y BUENAS PRÁCTICAS (Slide 4)
+   REGULA UNIVERSAL Y BUENAS PRÁCTICAS
    Asegura que el ancho declarado incluya padding y border.
    ========================================================== */
 * {
@@ -17,21 +17,13 @@ body {
 }
 
 /* ==========================================================
-   SECCIÓN 1: CABECERA (<header>) - Aplicación de 4 capas (Slide 8)
+   SECCIÓN 1: CABECERA (<header>)
    ========================================================== */
 header {
-    /* 1. Content: Ancho máximo */
     max-width: 900px;
-    
-    /* 2. Margin: Espacio transparente exterior y centrado horizontal (Shorthand) */
     margin: 40px auto; 
-    
-    /* 3. Padding: Aire interno (Arriba/Abajo: 25px, Izquierda/Derecha: 20px) */
     padding: 50px 40px; 
-    
-    /* 4. Border: Límite visible */
     border: 3px solid #1c5c9c; 
-    
     background-color: #ffffff;
     text-align: center;
     border-radius: 8px;
@@ -69,21 +61,13 @@ section {
 }
 
 /* ==========================================================
-   SECCIÓN 2: TARJETAS DE PRODUCTOS (.producto) - Aplicación de 4 capas (Slide 8)
+   SECCIÓN 2: TARJETAS DE PRODUCTOS (.producto)
    ========================================================== */
 .producto {
-    /* 1. Content: Ancho del contenido */
     max-width: 450px; 
-    
-    /* 2. Margin: Separación vertical entre tarjetas y centrado (Shorthand) */
     margin: 30px auto; 
-    
-    /* 3. Padding: Aire interno alrededor de la imagen y texto */
     padding: 20px; 
-    
-    /* 4. Border: Límite visible del producto */
     border: 2px solid #1c5c9c; 
-    
     background-color: #ffffff;
     border-radius: 8px;
     text-align: center;
@@ -110,7 +94,7 @@ section {
 .producto a {
     display: inline-block;
     margin-top: 10px;
-    padding: 10px 15px; /* Padding interno del botón */
+    padding: 10px 15px;
     background-color: #25d366;
     color: #ffffff;
     text-decoration: none;
@@ -120,6 +104,84 @@ section {
 
 .producto a:hover {
     background-color: #1eb954;
+}
+
+/* ==========================================================
+   SECCIÓN 3: CALCULADORA DE COMPRAS INTERACTIVA
+   ========================================================== */
+.calculadora-form {
+    max-width: 480px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.campo-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.campo-form label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #1c5c9c;
+}
+
+.campo-form select,
+.campo-form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #cbdcf0;
+    border-radius: 6px;
+    outline: none;
+    background-color: #fafbfc;
+}
+
+.campo-form select:focus,
+.campo-form input:focus {
+    border-color: #1c5c9c;
+    background-color: #ffffff;
+}
+
+#btnCalcular {
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #1c5c9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#btnCalcular:hover {
+    background-color: #144373;
+}
+
+.resultado-box {
+    max-width: 480px;
+    margin: 25px auto 10px auto;
+    padding: 20px;
+    background-color: #f0f7ff;
+    border: 2px dashed #1c5c9c;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.resultado-box p {
+    margin: 8px 0;
+    font-size: 1rem;
+}
+
+.resultado-box .total-final {
+    margin-top: 15px;
+    color: #1c5c9c;
+    border-top: 2px solid #cbdcf0;
+    padding-top: 10px;
+    font-size: 1.2rem;
 }
 
 /* ==========================================================

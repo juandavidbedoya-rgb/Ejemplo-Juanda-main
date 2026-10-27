@@ -1,37 +1,58 @@
 
-const metaSemanal = 1200000; // Meta: $1.200.000 COP
-let ventasAcumuladas = 0;    // Operador de asignaciones (=)
+mostrarResumenes();
 
-console.log("=== REGISTRO SEMANAL DE VENTAS: URBAN GLOW ===");
+function calcularTotalCompra(precioUnitario, cantidad) {
+    const IVA = 0.19;
+    let subtotal = precioUnitario * cantidad; 
+    let descuento = 0;
 
-for (let dia = 1; dia <= 7; dia++) {
+    if (cantidad >= 3) { 
+        descuento = subtotal * 0.10; 
+    }
 
-    let ventaDelDia = (dia % 2 === 0) ? 210000 : 149900; 
+    let subtotalConDescuento = subtotal - descuento;
+    let montoIVA = subtotalConDescuento * IVA;
+    let totalFinal = subtotalConDescuento + montoIVA;
 
-    ventasAcumuladas += ventaDelDia;
-
-    console.log(`Día ${dia}: Venta de $${ventaDelDia} COP | Acumulado total: $${ventasAcumuladas} COP`);
+    return {
+        subtotal: subtotal,
+        descuento: descuento,
+        iva: montoIVA,
+        total: Math.round(totalFinal)
+    };
 }
 
-console.log("\n=== EVALUACIÓN DE RESULTADOS ===");
-if (ventasAcumuladas >= metaSemanal) {
-    console.log(`¡Meta cumplida! Se vendió un total de $${ventasAcumuladas} COP.`);
-} else if (ventasAcumuladas >= metaSemanal * 0.8) {
-    console.log(`Casi se logra la meta. Se alcanzó el 80% con $${ventasAcumuladas} COP.`);
-} else {
-    let faltante = metaSemanal - ventasAcumuladas;
-    console.log(`Falta ventas para la meta. Quedaron faltando $${faltante} COP.`);
+function mostrarResumenes() {
+    console.log("=== PRUEBAS AUTOMÁTICAS EN CONSOLA ===");
+
+    const precio1 = 149900;
+    let cantidad1 = 3;
+    let res1 = calcularTotalCompra(precio1, cantidad1);
+    console.log("Caso 1 - Hoodie Oversize Neon (x3): $" + res1.total + " COP");
+
+    const precio2 = 210000;
+    let cantidad2 = 1;
+    let res2 = calcularTotalCompra(precio2, cantidad2);
+    console.log("Caso 2 - Chaqueta Street Biker (x1): $" + res2.total + " COP");
 }
 
-console.log("\n=== CÁLCULO DE META EXTRA DE EXPANSION ===");
+function calcularInteractiva() {
 
-const metaExtra = 2000000; // Meta de expansión: $2.000.000 COP
-let ventasAdicionales = 0; // Contador de ventas extra (++)
+    const select = document.getElementById("selectProducto");
+    const inputCant = document.getElementById("inputCantidad");
 
-while (ventasAcumuladas < metaExtra) {
-    ventasAcumuladas += 135000; 
-    ventasAdicionales++;       
+    const precioUnitario = Number(select.value);
+    const cantidad = Number(inputCant.value);
+
+    if (isNaN(cantidad) || cantidad <= 0) {
+        alert("Por favor ingresa una cantidad válida mayor a 0.");
+        return;
+    }
+
+    const calculo = calcularTotalCompra(precioUnitario, cantidad);
+
+    document.getElementById("resSubtotal").textContent = "$" + calculo.subtotal.toLocaleString("es-CO") + " COP";
+    document.getElementById("resDescuento").textContent = "- $" + calculo.descuento.toLocaleString("es-CO") + " COP";
+    document.getElementById("resIVA").textContent = "$" + Math.round(calculo.iva).toLocaleString("es-CO") + " COP";
+    document.getElementById("resTotal").textContent = "$" + calculo.total.toLocaleString("es-CO") + " COP";
 }
-
-console.log(`Para llegar a la meta extra de $${metaExtra} COP se requirieron ${ventasAdicionales} ventas adicionales.`);
-console.log(`Total final de ventas URBAN GLOW: $${ventasAcumuladas} COP.`);

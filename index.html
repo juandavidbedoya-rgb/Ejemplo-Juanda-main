@@ -7,22 +7,23 @@
 </head>
 <body>
 
-    <!-- Cabecera principal de la página (Slide 5) -->
+    <!-- Cabecera principal de la página -->
     <header>
         <h1>URBAN GLOW</h1>
         <p><i>Moda y Estilo Urbano</i></p>
         
-        <!-- Menú de navegación con hipervínculos (Slide 5 y 9) -->
+        <!-- Menú de navegación con hipervínculos -->
         <nav>
             <a href="#inicio">Inicio</a> | 
             <a href="#catalogo">Catálogo de Ropa</a> | 
+            <a href="#calculadora">Calculadora</a> | 
             <a href="#nosotros">Sobre Nosotros</a> | 
             <a href="#contacto">Contacto</a>
         </nav>
         <hr>
     </header>
 
-    <!-- Contenido principal único de la página (Slide 6 - Solo un <main>) -->
+    <!-- Contenido principal único de la página -->
     <main>
         
         <!-- Sección de Bienvenida -->
@@ -38,7 +39,7 @@
         <section id="catalogo">
             <h2>Catálogo de Ropa</h2>
 
-            <!-- Producto 1 (Agrupado con div - Slide 8) -->
+            <!-- Producto 1 -->
             <div class="producto">
                 <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80" alt="Buzo Hoodie Oversize" width="300">
                 <h3>Hoodie Oversize Neon</h3>
@@ -51,7 +52,7 @@
 
             <br>
 
-            <!-- Producto 2 (Agrupado con div) -->
+            <!-- Producto 2 -->
             <div class="producto">
                 <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Chaqueta Biker de Cuero" width="300">
                 <h3>Chaqueta Street Biker</h3>
@@ -64,7 +65,7 @@
 
             <br>
 
-            <!-- Producto 3 (Agrupado con div) -->
+            <!-- Producto 3 -->
             <div class="producto">
                 <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=80" alt="Camiseta Grafica Urbana" width="300">
                 <h3>Camiseta Graphic Glow</h3>
@@ -77,7 +78,7 @@
 
             <br>
 
-            <!-- Producto 4 (Agrupado con div) -->
+            <!-- Producto 4 -->
             <div class="producto">
                 <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=400&q=80" alt="Pantalon Cargo Tactical" width="300">
                 <h3>Pantalón Cargo Tactical</h3>
@@ -86,6 +87,40 @@
                 <p><strong>Material:</strong> Tela Drill Ripstop</p>
                 <p><strong>Precio:</strong> <span>$135.000 COP</span></p>
                 <p><a href="https://api.whatsapp.com/send?text=Hola,%20quiero%20comprar%20el%20Pantalon%20Cargo" target="_blank">Comprar por WhatsApp</a></p>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Sección Calculadora de Compras Interactiva -->
+        <section id="calculadora">
+            <h2>Calculadora de Compras</h2>
+            <p>Selecciona una prenda y la cantidad que deseas adquirir. El sistema calculará automáticamente el subtotal, descuento por volumen (10% en 3 o más prendas) e IVA (19%).</p>
+
+            <form id="formCalculadora" class="calculadora-form" onsubmit="return false;">
+                <div class="campo-form">
+                    <label for="selectProducto">Selecciona un producto:</label>
+                    <select id="selectProducto">
+                        <option value="149900">Hoodie Oversize Neon - $149.900 COP</option>
+                        <option value="210000">Chaqueta Street Biker - $210.000 COP</option>
+                        <option value="69900">Camiseta Graphic Glow - $69.900 COP</option>
+                        <option value="135000">Pantalón Cargo Tactical - $135.000 COP</option>
+                    </select>
+                </div>
+
+                <div class="campo-form">
+                    <label for="inputCantidad">Cantidad de unidades:</label>
+                    <input type="number" id="inputCantidad" min="1" value="1">
+                </div>
+
+                <button type="button" id="btnCalcular" onclick="calcularInteractiva()">Calcular Total</button>
+            </form>
+
+            <div id="resultadoCalculadora" class="resultado-box">
+                <p><strong>Subtotal:</strong> <span id="resSubtotal">$0 COP</span></p>
+                <p><strong>Descuento (10% si &ge; 3 unid.):</strong> <span id="resDescuento">$0 COP</span></p>
+                <p><strong>IVA (19%):</strong> <span id="resIVA">$0 COP</span></p>
+                <h3 class="total-final">Total a Pagar: <span id="resTotal">$0 COP</span></h3>
             </div>
         </section>
 
@@ -102,7 +137,7 @@
 
     <hr>
 
-    <!-- Pie de página (Slide 5) -->
+    <!-- Pie de página -->
     <footer>
         <h3 id="contacto">Contacto e Información</h3>
         <p><strong>Correo electrónico:</strong> <a href="mailto:contacto@urbanglow.com">contacto@urbanglow.com</a></p>
@@ -116,13 +151,8 @@
         <p>&copy; 2026 URBAN GLOW - Todos los derechos reservados.</p>
         <p><a href="#inicio">Volver arriba ↑</a></p>
     </footer>
-<br>
-        <p>&copy; 2026 URBAN GLOW - Todos los derechos reservados.</p>
-        <p><a href="#inicio">Volver arriba ↑</a></p>
-    </footer>
 
     <!-- Enlace al archivo de JavaScript -->
     <script src="Java.js"></script>
 </body>
 </html>
-
